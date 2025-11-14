@@ -69,6 +69,10 @@ typed-argument-parser = ">=1.10.1,<2"
 meshcat-python = ">=0.3.2,<0.4"
 catch2 = ">=3.8.0,<4"
 mimalloc = ">=3.1.5,<4"
+viser = ">=1.0.0"
+pycollada = ">=0.9.2,<0.10"
+
+
 
 [activation]
 scripts = ["development/pixi/activation.sh"]
@@ -153,10 +157,6 @@ activation = { env = { ALIGATOR_TRACY_ENABLE = "ON" } }
 dependencies = { pinocchio = ">=3.8.0", example-robot-data-loaders = ">=4" }
 activation = { env = { ALIGATOR_PINOCCHIO_SUPPORT = "ON" } }
 
-[feature.crocoddyl]
-dependencies = { crocoddyl = ">=3.0.1" }
-activation = { env = { ALIGATOR_CROCODDYL_COMPAT = "ON" } }
-
 # Not supported by Windows (because of conda-forge issue)
 [feature.openmp]
 [feature.openmp.target.linux]
@@ -167,7 +167,7 @@ dependencies = { llvm-openmp = ">=19.1" }
 activation = { env = { ALIGATOR_OPENMP_SUPPORT = "ON" } }
 
 [feature.python-latest.dependencies]
-python = ">=3.14.0"
+python = ">=3.13.0"
 
 [feature.python-oldest.dependencies]
 python = "3.10.*"
@@ -199,28 +199,24 @@ default = { features = ["python-latest"], solve-group = "python-latest" }
 clang = { features = ["clang", "python-latest"] }
 lint = { features = ["lint"], solve-group = "python-latest" }
 pinocchio = { features = ["pinocchio", "python-latest"], solve-group = "python-latest" }
-crocoddyl = { features = ["crocoddyl", "python-latest"], solve-group = "python-latest" }
 openmp = { features = ["openmp", "python-latest"], solve-group = "python-latest" }
 tracy = { features = ["tracy", "python-latest"], solve-group = "python-latest" }
 python-oldest = { features = ["python-oldest"], solve-group = "python-oldest" }
 all = { features = [
   "doc",
   "pinocchio",
-  "crocoddyl",
   "openmp",
   "python-latest",
 ], solve-group = "python-latest" }
 all-python-oldest = { features = [
   "doc",
   "pinocchio",
-  "crocoddyl",
   "openmp",
   "python-oldest",
 ], solve-group = "python-oldest" }
 new-version = { features = [
   "new-version",
   "pinocchio",
-  "crocoddyl",
   "openmp",
   "python-latest",
 ], solve-group = "python-latest" }
